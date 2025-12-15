@@ -11,10 +11,17 @@ const Home = () => {
 
 
 	const addTodo = (e) => {
+
 		if (e.key === "Enter" && inputValue.trim() !== "") {
 			setTodos([...todos, inputValue]);
 			setInputValue("");
 		}
+	};
+
+
+	const deleteTodo = (index) => {
+		const newTodos = todos.filter((_, currentIndex) => currentIndex !== index);
+		setTodos(newTodos);
 	};
 
 	return (
@@ -24,9 +31,17 @@ const Home = () => {
 				value={inputValue}
 				updateValue={setInputValue}
 				handleKeyDown={addTodo}
+
+				placeholder={todos.length === 0 ? "No hay tareas, añadir tareas" : ""}
 			/>
 
-			<TodoList listOfTodos={todos}/>
+			
+		
+
+			<TodoList
+				listOfTodos={todos}
+				deleteTask={deleteTodo}
+			/>
 		</div>
 	);
 };
