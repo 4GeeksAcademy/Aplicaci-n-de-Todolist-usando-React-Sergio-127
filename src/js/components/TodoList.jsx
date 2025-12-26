@@ -5,11 +5,11 @@ const TodoList = ({ listOfTodos, deleteTask }) => {
         <ul className="list-group">
             
                 {listOfTodos.map((task, index) => (
-                    <li key={index} className="list-group-item d-flex justify-content-between task-item">
-                        {task}
+                    <li key={task.id} className="list-group-item d-flex justify-content-between task-item">
+                        {task.label}
                         <span
                             className="delete-icon"
-                            onClick={() => deleteTask(index)}
+                            onClick={() => deleteTask(task.id)}
                             style={{ cursor: "pointer" }}
 
                         >
